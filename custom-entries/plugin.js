@@ -47,7 +47,7 @@ module.exports = function withEntries(nextConfig) {
     webpackFinal: function (webpackConfig, options) {
       const { isServer, dev, dir } = options;
 
-      if (!isServer) {
+      if (!isServer && !dev) {
         function getCustomEntries() {
           const entriesDir = path.join(dir, 'entries');
           const files = readdirSync(entriesDir);
@@ -58,20 +58,9 @@ module.exports = function withEntries(nextConfig) {
           }, {})
         }
 
-        if(dev) {
-          const updateEntry = webpackConfig.entry;
-          webpackConfig.entry = async function customEntry() {
-            const entries = await updateEntry()
-            return {
-              ...entries,
-              ...getCustomEntries()
-            }
-          }
-        } else {
-          webpackConfig.entry = {
-            ...webpackConfig.entry,
-            ...getCustomEntries()
-          }
+        webpackConfig.entry = {
+          ...webpackConfig.entry,
+          ...getCustomEntries()
         }
       }
 
