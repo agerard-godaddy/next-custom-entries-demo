@@ -6,6 +6,7 @@ const pages = {
   '/two': 'Page Two - Island Hydration',
   '/three': 'Page Three - Web Components',
   '/four': 'Page Four - Web Components (No Webpack)',
+  '/five': 'Page Five - Lazy Island Hydration',
   '/deep/dynamic': 'Dynamic Page - Web Components (No Webpack)'
 };
 

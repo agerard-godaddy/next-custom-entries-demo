@@ -12,6 +12,9 @@ const pageConfigs = {
   '/four': {
     script: '/no-webpack.js'
   },
+  '/five': {
+    entry: 'lazy-react-islands'
+  },
   '/deep/[slug]': {
     script: '/no-webpack.js'
   }
